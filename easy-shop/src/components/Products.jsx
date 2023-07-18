@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/Products.css';
+import {AiFillHeart} from 'react-icons/ai'
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavoriteList, removeFavoriteList } from '../redux/productSlice';
 
 const Products = ({product}) => {
 
+  const fav = product.favorite;
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    if(!fav) {
+      dispatch(addFavoriteList(product.id));
+    } else {
+      dispatch(removeFavoriteList(product.id));
+    }
+  }
+
   return (
     <div className='product-card border  border-1 relative'>
+      <button className={fav ? 'absolute right-2 top-4 text-red-500' : 'absolute right-2 top-4 '} type='button' onClick={handleClick}><AiFillHeart/></button>
       <figure className='flex justify-center my-5'>
         <img src={product.image}   alt="product-image"  className='product-image'/>
       </figure>
