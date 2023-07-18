@@ -39,6 +39,20 @@ const productSlice = createSlice({
                 return ({...product, favorite: false})
             });
             state.value = newState;
+        },
+        addCartList: (state, action) => {
+            const newState = state.value.map((product) => {
+                if(product.id !== action.payload) return product;
+                return ({...product, cart: true});
+            });
+            state.value = newState;
+        },
+        removeCartList: (state, action) => {
+            const newState = state.value.map((product) => {
+                if(product.id !== action.payload) return product;
+                return ({...product, cart:false})
+            });
+            state.value = newState;
         }
     },
     extraReducers: (builder) => {
@@ -58,4 +72,4 @@ const productSlice = createSlice({
     }
 })
 export default productSlice.reducer;
-export const {addFavoriteList, removeFavoriteList} = productSlice.actions;
+export const {addFavoriteList, removeFavoriteList, addCartList, removeCartList} = productSlice.actions;
