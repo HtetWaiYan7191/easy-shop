@@ -1,0 +1,14 @@
+.product-image {
+    height: 10rem;
+    object-fit: contain;
+}
+
+.product-description {
+    height: 100px;
+    overflow-y: scroll;
+
+}
+
+::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
