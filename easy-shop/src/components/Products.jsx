@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import '../styles/Products.css';
 import {AiFillHeart} from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavoriteList, removeFavoriteList } from '../redux/productSlice';
+import { addFavoriteList, removeFavoriteList, addCartList, removeCartList } from '../redux/productSlice';
 
 const Products = ({product}) => {
-
+  const inCart = product.cart;
   const fav = product.favorite;
   const dispatch = useDispatch();
 
@@ -14,6 +14,14 @@ const Products = ({product}) => {
       dispatch(addFavoriteList(product.id));
     } else {
       dispatch(removeFavoriteList(product.id));
+    }
+  };
+
+  const handleCart = () => {
+    if(!inCart) {
+      dispatch(addCartList(product.id))
+    } else {
+      dispatch(removeCartList(product.id))
     }
   }
 
@@ -26,7 +34,7 @@ const Products = ({product}) => {
       <h2 className='text-md font-semibold text-center max-h-[24px] overflow-auto'>{product.title}</h2>
       <p className=' text-gray-500 product-description px-5 my-4 '>{product.description}</p>
       <div className='text-center py-4 text-slate-600'>${product.price}</div>
-      <button className=' w-full p-3 bg-teal-400 border hover:bg-teal-300 active:bg-teal-500'>Add to Cart</button>
+      <button className= {!inCart ? ' w-full p-3 bg-teal-400 border hover:bg-teal-300 active:bg-teal-500' : 'w-full p-3 bg-red-500 border hover:bg-red-400 active:bg-red-600 text-white'} onClick={handleCart}>{!inCart ? 'Add to Cart' : 'Remove From Cart'}</button>
       <button className=' w-full p-3 bg-sky-400 border hover:bg-sky-300 active:bg-sky-500'>Details</button>
     </div>
   )
