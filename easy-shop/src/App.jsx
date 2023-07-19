@@ -4,6 +4,7 @@ import ProductsContainer from './pages/ProductsContainer';
 import FavoriteItems from './pages/FavoriteItems';
 import CartItems from './pages/CartItems';
 import Details from './components/Details';
+import SearchPage from './components/SearchPage';
 
 
 const App = () => {
@@ -12,7 +13,8 @@ const App = () => {
       <Route path='/' element={<ProductsContainer/>}></Route>
       <Route path='/favorite' element={<FavoriteItems/>}></Route>
       <Route path='/cartItems' element={<CartItems/>}></Route>
-      <Route path='/details/:product' element={<Details/>}></Route>
+      <Route path='/search/:product' element={<SearchPage/>}></Route>
+      <Route path='/details/:productId' element={<Details/>}></Route>
     </Routes>
   )
 }
