@@ -53,7 +53,7 @@ const productSlice = createSlice({
                 return ({...product, cart:false})
             });
             state.value = newState;
-        }
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchProducts.pending, (state) => {
