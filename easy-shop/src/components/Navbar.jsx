@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import {AiOutlineShoppingCart} from 'react-icons/ai'
 import '../styles/Navbar.css';
 
 const Navbar = () => {
@@ -12,7 +13,10 @@ const Navbar = () => {
   };
   return (
     <nav className='flex justify-between items-center border border-b-1'>
-      <Link to="/"><h1 className='text-3xl font-semibold ps-10 py-5'>Easy Shop</h1></Link>
+      <Link to="/" className=' flex items-center'>
+        <h1 className='text-3xl font-semibold ps-10 py-5 font-mono'>Easy Shop</h1>
+        <AiOutlineShoppingCart className=" text-4xl text-teal-500 ms-4"/>
+        </Link>
         <form onSubmit={handleSubmit}>
           <input type="text" value={inputSearch} onChange={(e) => setInputSearch(e.target.value)}  placeholder='Search  Product'  className=' outline-none border-b-2  focus:outline-none focus:border-b-teal-600   border-b-teal-300 placeholder:ps-1 ps-2'/>
         </form>
