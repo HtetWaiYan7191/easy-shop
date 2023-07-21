@@ -10,6 +10,7 @@ const Navbar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate(`/search/${inputSearch}`)
+    setInputSearch('')
   };
   return (
     <nav className='flex justify-between items-center border border-b-1'>

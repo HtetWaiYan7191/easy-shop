@@ -1,12 +1,26 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
+import Products from './Products';
 
 const SearchPage = () => {
     const {product} = useParams();
+    const products = useSelector((state) => state.products.value);
+    const lowerCaseProducts = products.map((product) => ({
+      ...product,
+      title: product.title.toLowerCase()
+    }));
+    const searchProduct = lowerCaseProducts.filter((item) => item.title === product);
+
+  if(searchProduct.length === 0) {
+    return(
+      <div>There is no result</div>
+    )
+  }
   return (
-    <div>
-      This is search page {product}
-    </div>
+    <div className='product-container flex justify-center my-10 w-[40%] mx-auto'>
+    {searchProduct.map((product) => <Products key={product} product={product}/>)}
+  </div>
   )
 }
 
