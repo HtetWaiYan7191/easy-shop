@@ -8,11 +8,17 @@ const Details = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) =>state.detail.value);
+  const loading = useSelector((state) => state.detail.loading);
+  console.log(loading)
   console.log(product)
 
   useEffect(() => {
-    dispatch(fetchProductData(productId))
-  }, [dispatch])
+      dispatch(fetchProductData(productId))
+  }, [dispatch])  
+
+  if(loading === true || product.length === 0) {
+    return(<div><h2>Loading...</h2></div>)
+  }
   return (
     <div className='detail-container flex items-center h-screen'>
       <div className='detail-card flex w-[80%] mx-auto items-center'>
@@ -21,7 +27,7 @@ const Details = () => {
           </figure>
           <div className='product-details-text'>
               <h2 className='text-xl font-semibold'>{product.title}</h2>
-              <div className="rating-container flex my-5 w-[20%] justify-between items-center">
+              <div className="rating-container flex my-5 w-[200px] justify-between items-center">
                 <div className="rating-icon-container flex">
                   <AiFillStar className='text-yellow-500'/>
                   <AiFillStar className='text-yellow-500'/>
