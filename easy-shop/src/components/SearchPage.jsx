@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import Products from './Products';
+import LoadingIcon from './LoadingIcon';
 
 const SearchPage = () => {
     const {product} = useParams();
@@ -14,7 +15,7 @@ const SearchPage = () => {
 
   if(searchProduct.length === 0) {
     return(
-      <div>There is no result</div>
+      <LoadingIcon/>
     )
   }
   return (

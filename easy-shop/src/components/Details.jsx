@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchProductData } from '../redux/detailSlice';
 import {AiFillStar} from 'react-icons/ai';
+import LoadingIcon from './LoadingIcon';
 
 const Details = () => {
   const { productId } = useParams();
@@ -17,7 +18,7 @@ const Details = () => {
   }, [dispatch])  
 
   if(loading === true || product.length === 0) {
-    return(<div><h2>Loading...</h2></div>)
+    return(<LoadingIcon/>)
   }
   return (
     <div className='detail-container flex items-center h-[90%]'>
