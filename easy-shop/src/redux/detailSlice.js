@@ -20,9 +20,15 @@ const detailSlice = createSlice({
     initialState,
     reducers:{},
     extraReducers: (builder) => {
+        builder.addCase(fetchProductData.pending, (state) => {
+            state.loading = true;
+        });
+
         builder.addCase(fetchProductData.fulfilled, (state, action) => {
             state.value = action.payload;
-        })
+            state.loading = false;
+        });
+
     }
 })
 
