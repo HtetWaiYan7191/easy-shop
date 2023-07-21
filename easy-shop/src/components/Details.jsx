@@ -20,12 +20,12 @@ const Details = () => {
     return(<div><h2>Loading...</h2></div>)
   }
   return (
-    <div className='detail-container flex items-center h-screen'>
-      <div className='detail-card flex w-[80%] mx-auto items-center'>
-          <figure className=' me-10 border-r-2 pe-5 border-r-slate-500 w-[500px] h-[500px] flex items-center'>
+    <div className='detail-container flex items-center h-[90%]'>
+      <div className='detail-card my-10 flex w-[80%] mx-auto items-center border border-1 shadow-md shadow-slate-500 px-5'>
+          <figure className=' me-10 border-r-2 pe-5 border-r-slate-500 w-[500px] h-[400px] flex items-center'>
             <img src={product.image}  className=" object-contain" alt="" />
           </figure>
-          <div className='product-details-text'>
+          <div className='product-details-text '>
               <h2 className='text-xl font-semibold'>{product.title}</h2>
               <div className="rating-container flex my-5 w-[200px] justify-between items-center">
                 <div className="rating-icon-container flex">
@@ -37,7 +37,7 @@ const Details = () => {
                 </div>
                 <span className='text-blue-500'>{product.rating.count} ratings</span>
               </div>
-              <p className=' text-justify text-gray-800 my-5 '>{product.description}</p>
+              <p className=' text-justify text-gray-800 my-5 text'>{product.description}</p>
               <div className='text-lg mb-3 '>Price : <span className='text-2xl text-red-500'>${product.price}</span></div>
               <div>Category: <span className='text-md font-semibold'>{product.category}</span></div>
           </div>
